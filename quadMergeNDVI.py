@@ -1,5 +1,6 @@
 import os, arcpy, sys, tempfile, shutil, datetime
 
+
 def mosaicRasters(rasterList, outputDir, numBands, outName):
 	
 	print "\nRunning mosaic process"
