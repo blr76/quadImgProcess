@@ -53,13 +53,16 @@ def addNDVI(inputTif, workDir, outName):
 
 	return os.path.join(workDir, outName+'_RGBNIR_NDVI.tif')
 	
-def getRasters(quadFile):
+def getRasters(quadDir):
 	
-	quarQuadsDir = [f for f in os.listdir(quadFile) if not os.path.isfile(quadFile+f)]
+	quarQuadsDir = [f for f in os.listdir(quadDir) if not os.path.isfile(os.path.join(quadDir,f))]
 
 	quarQuads = list()
 	for quart in quarQuadsDir:
-		quarQuads.append(os.path.join(quadFile+quart,""))
+		quarQuads.append(os.path.join(quadDir,quart))
+	
+	for q in quarQuads:
+		print q
 	
 	quarImage = list()
 	for quarDir in quarQuads:
@@ -111,7 +114,7 @@ def makeTempLocalCopy(rasterList, tempDir):
 	
 def copyToDestination(rasterPath,quadDir):
 
-	arcpy.Copy_management(rasterPath,quadDir+rasterPath.split('\\')[-1])
+	arcpy.Copy_management(rasterPath,os.path.basename(rasterPath))
 
 def main(cmdLinePath):
 
