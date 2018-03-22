@@ -9,7 +9,7 @@ def mosaicRasters(rasterList, outputDir, numBands, outName):
 	rasterListStr = ";".join(rasterList)
 	arcpy.MosaicToNewRaster_management(rasterListStr, outputDir, "mosaicAlpha.tif", None, None, None, numBands, "LAST","MATCH")
 	
-	trunkToFourLayerTif(outputDir+"mosaicAlpha.tif", outputDir, outName+'_mosaic.tif')
+	trunkToFourLayerTif(os.path.join(outputDir, "mosaicAlpha.tif"), outputDir, outName+'_mosaic.tif')
 	
 	return outputDir+outName+"_mosaic.tif"
 	
@@ -18,21 +18,21 @@ def trunkToFourLayerTif(inputTif, workDir, outName):
 
 	print "\nTruncating alpha band"
 	vtab = arcpy.CreateObject("ValueTable")    
-	vtab.addRow(inputTif + "\\Band_1")  
-	vtab.addRow(inputTif + "\\Band_2")  
-	vtab.addRow(inputTif + "\\Band_3")  
-	vtab.addRow(inputTif + "\\Band_4")
-	arcpy.CompositeBands_management(vtab, workDir+'fourComp.tif')
+	vtab.addRow(os.path.join(inputTif, "Band_1")) 
+	vtab.addRow(os.path.join(inputTif, "Band_2"))  
+	vtab.addRow(os.path.join(inputTif, "Band_3"))  
+	vtab.addRow(os.path.join(inputTif, "Band_4"))
+	arcpy.CompositeBands_management(vtab, os.path.join(workDir,'fourComp.tif'))
 	arcpy.Delete_management(inputTif)
-	arcpy.Rename_management(workDir+'fourComp.tif', outName)
+	arcpy.Rename_management(os.path.join(workDir, 'fourComp.tif'), outName)
 	
 def addNDVI(inputTif, workDir, outName):
 
 	arcpy.CheckOutExtension('spatial')
 	
 	print "\nCalculating NDVI and stacking to band 5"
-	red = arcpy.sa.Raster(inputTif+"\\Band_1")
-	NIR = arcpy.sa.Raster(inputTif+"\\Band_4")
+	red = arcpy.sa.Raster(os.path.join(inputTif, "Band_1"))
+	NIR = arcpy.sa.Raster(os.path.join(inputTif, "Band_4"))
 	
 	numerator = arcpy.sa.Float(NIR-red)
 	denominator = arcpy.sa.Float(NIR+red)
@@ -42,16 +42,16 @@ def addNDVI(inputTif, workDir, outName):
 	NDVI_int = arcpy.sa.Int(NDVI_add)
 	
 	vtab = arcpy.CreateObject("ValueTable")    
-	vtab.addRow(inputTif + "\\Band_1")  
-	vtab.addRow(inputTif + "\\Band_2")  
-	vtab.addRow(inputTif + "\\Band_3")  
-	vtab.addRow(inputTif + "\\Band_4")
+	vtab.addRow(os.path.join(inputTif, "Band_1")) 
+	vtab.addRow(os.path.join(inputTif, "Band_2"))  
+	vtab.addRow(os.path.join(inputTif, "Band_3"))  
+	vtab.addRow(os.path.join(inputTif, "Band_4"))
 	vtab.addRow(NDVI_int)
-	arcpy.CompositeBands_management(vtab, workDir+outName+'_RGBNIR_NDVI.tif')
+	arcpy.CompositeBands_management(vtab, os.path.join(workDir, outName+'_RGBNIR_NDVI.tif'))
 	
 	arcpy.CheckInExtension('spatial')
 
-	return workDir+outName+'_RGBNIR_NDVI.tif'
+	return os.path.join(workDir, outName+'_RGBNIR_NDVI.tif')
 	
 def getRasters(quadFile):
 	
@@ -59,25 +59,23 @@ def getRasters(quadFile):
 
 	quarQuads = list()
 	for quart in quarQuadsDir:
-		quarQuads.append(quadFile+quart+"\\")
+		quarQuads.append(os.path.join(quadFile+quart,""))
 	
 	quarImage = list()
 	for quarDir in quarQuads:
 		for file in os.listdir(quarDir):
 			#print file
 			if file.endswith(".jp2"):
-				quarImage.append(quarDir+file)
+				quarImage.append(os.path.join(quarDir,file))
 	
 	return quarImage
 	
 def getOutputName(quadDir):
 
-	return quadDir.split("\\")[-2]
+	return os.path.basename(quadDir)
 	
 def checkPath(path):
 
-	if not path.endswith("\\"):
-		path+=("\\")
 	if not os.path.exists(path):
 		raise Exception('File path error, check input path')
 	return path
@@ -100,14 +98,14 @@ def makeTempLocalCopy(rasterList, tempDir):
 	for raster in rasterList:
 		dirname = os.path.dirname(raster)
 		for file in os.listdir(dirname):
-			shutil.copy(dirname+'\\'+file, tempDir)
+			shutil.copy(os.path.join(dirname,file), tempDir)
 	# for raster in rasterList:
 		# arcpy.Copy_management(raster,tempDir+str(raster).split('\\')[-1])
 	
 	tempRasDirList = list()
 	for file in os.listdir(tempDir):
 			if file.endswith(".jp2"):
-				tempRasDirList.append(tempDir+file)
+				tempRasDirList.append(os.path.join(tempDir,file))
 	
 	return tempRasDirList
 	
@@ -120,7 +118,6 @@ def main(cmdLinePath):
 	try:
 		#arcpy.CheckOutExtension('spatial')
 		tempDir = tempfile.mkdtemp()
-		tempDir += '\\'
 		
 		arcpy.env.pyramid = "NONE"
 		
