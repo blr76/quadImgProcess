@@ -1,8 +1,23 @@
-C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\1_ANDREWS\2_Baird_Lake\
-C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\1_ANDREWS\5_Eunice_SE\
-C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\1_ANDREWS\6_Figure_Seven_Ranch\
-C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\1_ANDREWS\7_Five_Wells_Ranch\
-C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\1_ANDREWS\8_Five_Wells_Ranch_NW\
-C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\1_ANDREWS\9_Five_Wells_Ranch_SE\
-C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\1_ANDREWS\10_Five_Wells_SW\
-PAUSE
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\10_COCHRAN\173_Maple >log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\10_COCHRAN\174_Enochs >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\10_COCHRAN\175_County_Line >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\179_Ropesville >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\178_Locketville >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\182_Smyer >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\181_Wolfforth >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\187_Hester_Ranch >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\183_Levelland_East >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\195_Pep >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\190_Wolfforth_NE >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\194_Oklahoma_Flat >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\191_Roundup >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\192_Anton >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\180_Busterville >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\184_Levelland_West >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\188_Whitharral >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\189_Wolfforth_NW >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\193_Lums_chapel >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\177_Sundown >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\176_West_of_Sundown >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\186_Pettit >>log3_22_18_805pm.txt
+C:\Python27\ArcGIS10.4\python.exe C:\Scripts\quadMergeNDVI.py I:\11_HOCKLEY\185_Whiteface >>log3_22_18_805pm.txt
