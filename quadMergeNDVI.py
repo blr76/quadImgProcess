@@ -1,7 +1,5 @@
 import os, arcpy, sys, tempfile, shutil, datetime
 
-#testing git
-
 def mosaicRasters(rasterList, outputDir, numBands, outName):
 	
 	print "\nRunning mosaic process"
@@ -11,7 +9,7 @@ def mosaicRasters(rasterList, outputDir, numBands, outName):
 	
 	trunkToFourLayerTif(os.path.join(outputDir, "mosaicAlpha.tif"), outputDir, outName+'_mosaic.tif')
 	
-	return outputDir+outName+"_mosaic.tif"
+	return os.path.join(outputDir,outName+"_mosaic.tif")
 	
 
 def trunkToFourLayerTif(inputTif, workDir, outName):
@@ -61,13 +59,9 @@ def getRasters(quadDir):
 	for quart in quarQuadsDir:
 		quarQuads.append(os.path.join(quadDir,quart))
 	
-	for q in quarQuads:
-		print q
-	
 	quarImage = list()
 	for quarDir in quarQuads:
 		for file in os.listdir(quarDir):
-			#print file
 			if file.endswith(".jp2"):
 				quarImage.append(os.path.join(quarDir,file))
 	
@@ -102,8 +96,6 @@ def makeTempLocalCopy(rasterList, tempDir):
 		dirname = os.path.dirname(raster)
 		for file in os.listdir(dirname):
 			shutil.copy(os.path.join(dirname,file), tempDir)
-	# for raster in rasterList:
-		# arcpy.Copy_management(raster,tempDir+str(raster).split('\\')[-1])
 	
 	tempRasDirList = list()
 	for file in os.listdir(tempDir):
@@ -114,12 +106,12 @@ def makeTempLocalCopy(rasterList, tempDir):
 	
 def copyToDestination(rasterPath,quadDir):
 
-	arcpy.Copy_management(rasterPath,os.path.basename(rasterPath))
+	arcpy.Copy_management(rasterPath,os.path.join(quadDir, os.path.basename(rasterPath)))
 
 def main(cmdLinePath):
 
 	try:
-		#arcpy.CheckOutExtension('spatial')
+
 		tempDir = tempfile.mkdtemp()
 		
 		arcpy.env.pyramid = "NONE"
@@ -154,8 +146,7 @@ def main(cmdLinePath):
 		copyToDestination(mosaicWithNDVIPath, quadDir)
 		
 		print "\nProcessing finished: " + str(datetime.datetime.now().strftime("%I:%M:%S %p %d %B %Y"))
-		#arcpy.CheckInExtension('spatial')
-		
+
 	except Exception as error:
 		print "Exception caught: " + repr(str(error))
 		print "\nPress enter to close..."
